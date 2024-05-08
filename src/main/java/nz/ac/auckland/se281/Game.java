@@ -14,6 +14,9 @@ public class Game {
   public void play() {
 
     MessageCli.START_ROUND.printMessage("1");
+    MessageCli.ASK_INPUT.printMessage();
+    MessageCli.INVALID_INPUT.printMessage();
+    
   }
 
   public void endGame() {}
