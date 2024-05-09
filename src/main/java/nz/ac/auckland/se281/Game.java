@@ -19,15 +19,27 @@ public class Game {
 
     MessageCli.START_ROUND.printMessage(String.valueOf(round));
 
-    MessageCli.ASK_INPUT.printMessage();
-    String fingers = Utils.scanner.nextLine();
+    boolean validInput = false;
+    int fingers = 0;
 
-    if (Integer.parseInt(fingers) < 0 || Integer.parseInt(fingers) > 5) {
-      MessageCli.INVALID_INPUT.printMessage();
-    } else {
-      MessageCli.PRINT_INFO_HAND.printMessage(name, fingers);
+    while (!validInput) {
+        MessageCli.ASK_INPUT.printMessage();
+        String input = Utils.scanner.nextLine();
+
+        try {
+            fingers = Integer.parseInt(input);
+            if (fingers < 0 || fingers > 5) {
+                MessageCli.INVALID_INPUT.printMessage();
+            } else {
+                validInput = true;
+            }
+        } catch (NumberFormatException e) {
+            MessageCli.INVALID_INPUT.printMessage();
+        }
     }
-  }
+
+    MessageCli.PRINT_INFO_HAND.printMessage(name, String.valueOf(fingers));
+}
 
   public void endGame() {}
 
