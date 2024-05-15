@@ -1,17 +1,33 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class Medium extends GameLevel {
+ 
+
+  private int Odd = 0;
+  private int Even = 0;
+
   @Override
-  public void play(int fingers, String name, Choice choice) {
-    int aiFingers = Utils.random.nextInt(6);
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingers));
-    int total = fingers + aiFingers;
-    if (total % 2 == 0) {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "EVEN", "HAL-9000");
-    } else {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "ODD", name);
+  public void play(int fingers, String name, Choice choice, int round) {
+
+    GameLevel initialRoundsStratergy = new Easy();
+    
+
+    if (round < 4) {
+      initialRoundsStratergy.play(fingers, name, choice, round);
+    }
+    else{
+      for (int i = 0; i < historyOfChoices.size(); i++) {
+        if (historyOfChoices.get(i) == Choice.EVEN) {
+          Even++;
+        } else {
+          Odd++;
+        }
+      }
+
+
     }
   }
 }

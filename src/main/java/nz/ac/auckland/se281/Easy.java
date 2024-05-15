@@ -3,12 +3,13 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class Easy extends GameLevel {
+
   @Override
-  public void play(int fingers, String name, Choice choice) {
+  public void play(int fingers, String name, Choice choice, int round) {
+
     int aiFingers = Utils.random.nextInt(6);
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingers));
     int total = fingers + aiFingers;
-    System.out.println(choice);
 
     if (total % 2 == 0) {
       if (choice == Choice.EVEN) {
