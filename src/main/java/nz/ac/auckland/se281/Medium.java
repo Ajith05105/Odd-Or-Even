@@ -1,24 +1,21 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class Medium extends GameLevel {
- 
 
   private int odd = 0;
   private int even = 0;
+  private Choice likelyChoice;
 
   @Override
   public void play(int fingers, String name, Choice choice, int round) {
-    System.out.println("Medium Level");
 
     if (round < 4) {
       Strategy strategy = new Strategy(name, fingers, choice);
       strategy.setStrategy(new Random());
       strategy.playGame();
-    }
-    else{
+    } else {
       System.out.println(historyOfChoices);
       for (int i = 0; i < historyOfChoices.size(); i++) {
         if (historyOfChoices.get(i) == Choice.EVEN) {
@@ -28,14 +25,13 @@ public class Medium extends GameLevel {
         }
       }
       if (even > odd) {
-        choice = Choice.EVEN;
-        
+        likelyChoice = Choice.EVEN;
+
+      } else {
+        likelyChoice = Choice.ODD;
       }
-      else{
-        choice = Choice.ODD;
-      }
-      Strategy strategy = new Strategy(name, fingers, choice);
-      strategy.setStrategy(new TopLevel());
+      Strategy strategy = new Strategy(name, fingers, likelyChoice);
+      strategy.setStrategy(new TopLevel(choice));
       strategy.playGame();
     }
   }
