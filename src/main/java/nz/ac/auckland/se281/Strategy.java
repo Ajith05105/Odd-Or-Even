@@ -22,7 +22,7 @@ public class Strategy {
     strategy.playGame(fingers, name, choice);
   }
 
-  public void getWinner() {
-    strategy.getWinner();
+  public String getWinner() {
+    return strategy.getWinner();
   }
 }
