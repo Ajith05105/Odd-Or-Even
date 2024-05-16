@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class TopLevel implements Execute {
@@ -8,14 +9,34 @@ public class TopLevel implements Execute {
   private int total = 0;
   private Choice playerChoice;
   private Choice likelyChoice;
+  private ArrayList<Choice> historyOfChoices = new ArrayList<Choice>();
+  int even = 0;
+  int odd = 0;
 
-  public TopLevel(Choice playerChoice) {
-    this.playerChoice = playerChoice;
+  public TopLevel(ArrayList<Choice> historyOfChoices) {
+    this.historyOfChoices = historyOfChoices;
   }
 
   @Override
   public void playGame(int fingers, String name, Choice choice) {
-    likelyChoice = choice;
+    for (int i = 0; i < historyOfChoices.size(); i++) {
+      if (historyOfChoices.get(i) == Choice.EVEN) {
+        even++;
+      } else {
+        odd++;
+      }
+    }
+    if (even > odd) {
+      likelyChoice = Choice.EVEN;
+
+    } else if (even == odd) {
+      Strategy strategy = new Strategy(name, fingers, choice);
+      strategy.setStrategy(new Random());
+      strategy.playGame();
+    } else {
+      likelyChoice = Choice.ODD;
+    }
+    playerChoice = choice;
 
     if (likelyChoice == Choice.EVEN && playerChoice == Choice.EVEN) {
       MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingersOdd));
