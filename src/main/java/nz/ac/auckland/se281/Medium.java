@@ -11,14 +11,15 @@ public class Medium extends GameLevel {
 
   @Override
   public void play(int fingers, String name, Choice choice, int round) {
-
-    GameLevel initialRoundsStratergy = new Easy();
-    
+    System.out.println("Medium Level");
 
     if (round < 4) {
-      initialRoundsStratergy.play(fingers, name, choice, round);
+      Strategy strategy = new Strategy(name, fingers, choice);
+      strategy.setStrategy(new Random());
+      strategy.playGame();
     }
     else{
+      System.out.println(historyOfChoices);
       for (int i = 0; i < historyOfChoices.size(); i++) {
         if (historyOfChoices.get(i) == Choice.EVEN) {
           even++;

@@ -2,9 +2,13 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class Random implements Execute{
+
     int aiFingers = Utils.random.nextInt(6);
+    
+    
     @Override
     public void playGame(int fingers, String name, Choice choice) {
+        System.out.println("Random Level");
         MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingers));
         int total = fingers + aiFingers;
 
