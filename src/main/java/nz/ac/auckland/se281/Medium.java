@@ -12,12 +12,12 @@ public class Medium extends GameLevel {
       Strategy strategy = new Strategy(name, fingers, choice);
       strategy.setStrategy(new Random());
       strategy.playGame();
+      winner = strategy.getWinner();
     } else {
       Strategy strategy = new Strategy(name, fingers, choice);
       strategy.setStrategy(new TopLevel(historyOfChoices));
       strategy.playGame();
       winner = strategy.getWinner();
-      
     }
   }
 }
