@@ -10,6 +10,7 @@ public class TopLevel implements Execute {
   private Choice playerChoice;
   private Choice likelyChoice;
   private ArrayList<Choice> historyOfChoices = new ArrayList<Choice>();
+  String winner = "";
   int even = 0;
   int odd = 0;
 
@@ -55,15 +56,25 @@ public class TopLevel implements Execute {
     if (total % 2 == 0) {
       if (playerChoice == Choice.EVEN) {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "EVEN", name);
+        winner = name;
+
       } else {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "EVEN", "HAL-9000");
+        winner = "HAL-9000";
       }
     } else {
       if (playerChoice == Choice.ODD) {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "ODD", name);
+        winner = name;
+
       } else {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "ODD", "HAL-9000");
+        winner = "HAL-9000";
       }
     }
+  }
+
+  public String getWinner() {
+    return winner;
   }
 }

@@ -4,5 +4,7 @@ import nz.ac.auckland.se281.Main.Choice;
 
 public interface Execute {
 
-  public void playGame(int fingers, String name, Choice choice);
+  public abstract void playGame(int fingers, String name, Choice choice);
+
+  public abstract String getWinner();
 }

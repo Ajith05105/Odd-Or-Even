@@ -21,4 +21,8 @@ public class Strategy {
   public void playGame() {
     strategy.playGame(fingers, name, choice);
   }
+
+  public void getWinner() {
+    strategy.getWinner();
+  }
 }
