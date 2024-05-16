@@ -15,23 +15,30 @@ public class TopLevel implements Execute {
 
   @Override
   public void playGame(int fingers, String name, Choice choice) {
+    likelyChoice = choice;
 
-    if (choice == Choice.EVEN) {
+    if (likelyChoice == Choice.EVEN && playerChoice == Choice.EVEN) {
       MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingersOdd));
       total = fingers + aiFingersOdd;
+    } else if (likelyChoice == Choice.ODD && playerChoice == Choice.ODD) {
+      MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingersOdd));
+      total = fingers + aiFingersOdd;
+    } else if (likelyChoice == Choice.EVEN && playerChoice == Choice.ODD) {
+      MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingersEven));
+      total = fingers + aiFingersEven;
     } else {
       MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", String.valueOf(aiFingersEven));
       total = fingers + aiFingersEven;
     }
 
     if (total % 2 == 0) {
-      if (choice == Choice.EVEN) {
+      if (playerChoice == Choice.EVEN) {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "EVEN", name);
       } else {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "EVEN", "HAL-9000");
       }
     } else {
-      if (choice == Choice.ODD) {
+      if (playerChoice == Choice.ODD) {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "ODD", name);
       } else {
         MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(total), "ODD", "HAL-9000");
