@@ -6,8 +6,8 @@ import nz.ac.auckland.se281.Main.Choice;
 public class Medium extends GameLevel {
  
 
-  private int Odd = 0;
-  private int Even = 0;
+  private int odd = 0;
+  private int even = 0;
 
   @Override
   public void play(int fingers, String name, Choice choice, int round) {
@@ -21,13 +21,21 @@ public class Medium extends GameLevel {
     else{
       for (int i = 0; i < historyOfChoices.size(); i++) {
         if (historyOfChoices.get(i) == Choice.EVEN) {
-          Even++;
+          even++;
         } else {
-          Odd++;
+          odd++;
         }
       }
-
-
+      if (even > odd) {
+        choice = Choice.EVEN;
+        
+      }
+      else{
+        choice = Choice.ODD;
+      }
+      Strategy strategy = new Strategy(name, fingers, choice);
+      strategy.setStrategy(new TopLevel());
+      strategy.playGame();
     }
   }
 }
