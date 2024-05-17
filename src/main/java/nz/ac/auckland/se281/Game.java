@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
-
+import nz.ac.auckland.se281.Difficulty.GameFactory;
+import nz.ac.auckland.se281.Difficulty.GameLevel;
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
