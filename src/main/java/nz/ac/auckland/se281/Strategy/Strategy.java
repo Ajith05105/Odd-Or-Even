@@ -1,4 +1,5 @@
 package nz.ac.auckland.se281.Strategy;
+
 import nz.ac.auckland.se281.Main.Choice;
 
 public class Strategy {
@@ -9,24 +10,38 @@ public class Strategy {
   // Reference to the strategy interface
   private Execute strategy;
 
-  // Constructor to initialize the Strategy object with player information
+  /**
+   * Constructor for the Strategy class
+   *
+   * @param name
+   * @param fingers
+   * @param choice
+   */
   public Strategy(String name, int fingers, Choice choice) {
     this.name = name;
     this.fingers = fingers;
     this.choice = choice;
   }
 
-  // Method to set the strategy for the current game
+  /**
+   * Method to set the strategy for the game
+   *
+   * @param strategy
+   */
   public void setStrategy(Execute strategy) {
     this.strategy = strategy;
   }
 
-  // Method to play the game using the selected strategy
+  /** Method to play the game */
   public void playGame() {
     strategy.playGame(fingers, name, choice);
   }
 
-  // Method to retrieve the winner of the game from the strategy
+  /**
+   * Method to get the winner of the game
+   *
+   * @return
+   */
   public String getWinner() {
     return strategy.getWinner();
   }

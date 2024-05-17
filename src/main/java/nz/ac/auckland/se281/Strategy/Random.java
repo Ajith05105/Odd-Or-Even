@@ -1,7 +1,8 @@
 package nz.ac.auckland.se281.Strategy;
+
+import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Utils;
-import nz.ac.auckland.se281.Main.Choice;
 
 public class Random implements Execute {
 
@@ -10,6 +11,13 @@ public class Random implements Execute {
   // Variable to store the winner of the round
   private String winner;
 
+  /**
+   * Play the game with the given number of fingers, player name, and choice.
+   *
+   * @param fingers The number of fingers the player is holding out
+   * @param name The name of the player
+   * @param choice The choice the player made
+   */
   @Override
   public void playGame(int fingers, String name, Choice choice) {
     // Print the AI's chosen number of fingers
@@ -41,6 +49,11 @@ public class Random implements Execute {
     }
   }
 
+  /**
+   * Get the winner of the round.
+   *
+   * @return The winner of the round
+   */
   @Override
   public String getWinner() {
     // Return the winner of the round
