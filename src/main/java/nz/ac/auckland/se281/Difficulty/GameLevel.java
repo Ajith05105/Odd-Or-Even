@@ -17,12 +17,16 @@ public abstract class GameLevel {
     return historyOfWinners;
   }
 
-  // Method to add a winner to the history of winners
+  /**
+   * @param winner
+   */
   public void addWinner(String winner) {
     historyOfWinners.add(winner);
   }
 
-  // Method to add a choice to the history of choices
+  /**
+   * @param roundChoice
+   */
   public void addChoice(Choice roundChoice) {
     historyOfChoices.add(roundChoice);
   }

@@ -1,10 +1,16 @@
-
 package nz.ac.auckland.se281.Difficulty;
-import nz.ac.auckland.se281.MessageCli;
+
 import nz.ac.auckland.se281.Main.Difficulty;
+import nz.ac.auckland.se281.MessageCli;
 
 public class GameFactory {
-  // Factory method to create an instance of GameLevel based on the chosen difficulty
+
+  /**
+   * Create a new game with the given difficulty level.
+   *
+   * @param difficulty The difficulty level of the game
+   * @return A new GameLevel object with the specified difficulty level
+   */
   public static GameLevel createGame(Difficulty difficulty) {
 
     // Switch statement to handle different difficulty levels
