@@ -1,7 +1,8 @@
 package nz.ac.auckland.se281;
+
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Difficulty.GameFactory;
 import nz.ac.auckland.se281.Difficulty.GameLevel;
-import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -17,7 +18,13 @@ public class Game {
   private int aiWins = 0; // Number of wins for AI
   private int playerWins = 0; // Number of wins for player
 
-  // Method to start a new game
+  /**
+   * Method to start a new game
+   *
+   * @param difficulty The difficulty level of the game
+   * @param choice The player's choice for the game
+   * @param options The player's name and other options
+   */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     round = 0;
     playerWins = 0;
@@ -30,6 +37,7 @@ public class Game {
     historyOfWinners = game.getHistoryOfWins();
   }
 
+  /** Method to play a round of the game */
   // Method to play a round of the game
   public void play() {
     round++; // Increment round number
@@ -73,7 +81,7 @@ public class Game {
     game.play(fingers, name, chosenChoice, round);
   }
 
-  // Method to end the game and print the outcome
+  /** Method to end the game and print the outcome */
   public void endGame() {
 
     if (chosenChoice == null) {
@@ -119,7 +127,7 @@ public class Game {
     chosenChoice = null; // Reset chosen choice
   }
 
-  // Method to show game statistics
+  /** Method to show the statistics of the game */
   public void showStats() {
     if (chosenChoice == null) {
       MessageCli.GAME_NOT_STARTED.printMessage(); // Print error if the game has not started

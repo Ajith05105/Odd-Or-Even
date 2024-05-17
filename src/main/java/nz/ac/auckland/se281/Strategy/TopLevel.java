@@ -1,9 +1,9 @@
 package nz.ac.auckland.se281.Strategy;
+
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Utils;
-
-import java.util.ArrayList;
 
 public class TopLevel implements Execute {
   private int aiFingersEven =
@@ -17,12 +17,16 @@ public class TopLevel implements Execute {
   private int even = 0; // Count of EVEN choices in history
   private int odd = 0; // Count of ODD choices in history
 
-  // Constructor to initialize the history of choices
+  /**
+   * Constructor for the TopLevel class
+   *
+   * @param historyOfChoices
+   */
   public TopLevel(ArrayList<Choice> historyOfChoices) {
     this.historyOfChoices = historyOfChoices;
   }
 
-  // Method to play the game
+  /** Play the game with the given number of fingers, player name, and choice. */
   @Override
   public void playGame(int fingers, String name, Choice choice) {
     // Count the occurrences of EVEN and ODD choices in history
@@ -84,7 +88,8 @@ public class TopLevel implements Execute {
     }
   }
 
-  // Method to get the winner of the round
+  /** Get the winner of the round. */
+  @Override
   public String getWinner() {
     return winner;
   }
