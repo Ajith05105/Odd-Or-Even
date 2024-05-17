@@ -13,11 +13,13 @@ public class Medium extends GameLevel {
       strategy.setStrategy(new Random());
       strategy.playGame();
       winner = strategy.getWinner();
+      historyOfWinners.add(winner);
     } else {
       Strategy strategy = new Strategy(name, fingers, choice);
       strategy.setStrategy(new TopLevel(historyOfChoices));
       strategy.playGame();
       winner = strategy.getWinner();
+      historyOfWinners.add(winner);
     }
   }
 }

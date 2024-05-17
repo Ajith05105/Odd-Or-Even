@@ -85,8 +85,8 @@ public class Game {
       }
     }
 
-    MessageCli.PRINT_PLAYER_WINS.printMessage(
-        name, String.valueOf(playerWins), String.valueOf(aiWins));
+    
+
 
     if (playerWins > aiWins) {
       MessageCli.PRINT_END_GAME.printMessage(name);
@@ -95,6 +95,7 @@ public class Game {
     } else {
       MessageCli.PRINT_END_GAME_TIE.printMessage();
     }
+    chosenChoice = null;
   }
 
   public void showStats() {
@@ -116,5 +117,9 @@ public class Game {
 
     MessageCli.PRINT_PLAYER_WINS.printMessage(
         name, String.valueOf(playerWins), String.valueOf(aiWins));
+
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        "HAL-9000", String.valueOf(aiWins), String.valueOf(playerWins));
+
   }
 }

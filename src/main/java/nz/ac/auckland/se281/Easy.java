@@ -12,5 +12,6 @@ public class Easy extends GameLevel {
     strategy.setStrategy(new Random());
     strategy.playGame();
     winner = strategy.getWinner();
+    historyOfWinners.add(winner);
   }
 }
