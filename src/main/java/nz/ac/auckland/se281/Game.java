@@ -19,40 +19,40 @@ public class Game {
   // Method to start a new game
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     round = 0;
-    playerWins = 0; 
-    aiWins = 0; 
+    playerWins = 0;
+    aiWins = 0;
     chosenDifficulty = difficulty;
-    chosenChoice = choice; 
-    name = options[0]; 
-    MessageCli.WELCOME_PLAYER.printMessage(options[0]); 
-    game = GameFactory.createGame(chosenDifficulty); 
-    historyOfWinners = game.getHistoryOfWins(); 
+    chosenChoice = choice;
+    name = options[0];
+    MessageCli.WELCOME_PLAYER.printMessage(options[0]);
+    game = GameFactory.createGame(chosenDifficulty);
+    historyOfWinners = game.getHistoryOfWins();
   }
 
   // Method to play a round of the game
   public void play() {
     round++; // Increment round number
     if (chosenChoice == null) {
-      MessageCli.GAME_NOT_STARTED.printMessage(); 
+      MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
 
     MessageCli.START_ROUND.printMessage(String.valueOf(round)); // Print the start of the round
 
-    boolean validInput = false; 
-    int fingers = 0; 
+    boolean validInput = false;
+    int fingers = 0;
 
     // Loop to get valid input from player
     while (!validInput) {
-      MessageCli.ASK_INPUT.printMessage(); 
-      String input = Utils.scanner.nextLine(); 
+      MessageCli.ASK_INPUT.printMessage();
+      String input = Utils.scanner.nextLine();
 
       try {
-        fingers = Integer.parseInt(input); 
+        fingers = Integer.parseInt(input);
         if (fingers < 0 || fingers > 5) {
-          MessageCli.INVALID_INPUT.printMessage(); 
+          MessageCli.INVALID_INPUT.printMessage();
         } else {
-          validInput = true; 
+          validInput = true;
         }
       } catch (NumberFormatException e) {
         MessageCli.INVALID_INPUT.printMessage(); // Print error if input is not a number
@@ -64,17 +64,17 @@ public class Game {
 
     // Determine if the input number is even or odd
     if (Utils.isEven(fingers)) {
-      roundChoice = Choice.EVEN; 
+      roundChoice = Choice.EVEN;
     } else {
-      roundChoice = Choice.ODD; 
+      roundChoice = Choice.ODD;
     }
-    game.addChoice(roundChoice); 
-    game.play(fingers, name, chosenChoice, round); 
+    game.addChoice(roundChoice);
+    game.play(fingers, name, chosenChoice, round);
   }
 
   // Method to end the game and print the outcome
   public void endGame() {
-    System.out.println(historyOfWinners); // Print history of winners for debugging
+
     if (chosenChoice == null) {
       MessageCli.GAME_NOT_STARTED.printMessage(); // Print error if the game has not started
       return;
