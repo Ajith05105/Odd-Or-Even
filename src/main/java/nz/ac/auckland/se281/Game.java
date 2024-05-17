@@ -94,10 +94,25 @@ public class Game {
 
     // Determine and print the overall game outcome
     if (playerWins > aiWins) {
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          name, String.valueOf(playerWins), String.valueOf(aiWins));
+
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          "HAL-9000", String.valueOf(aiWins), String.valueOf(playerWins));
       MessageCli.PRINT_END_GAME.printMessage(name); // Print if player wins
     } else if (playerWins < aiWins) {
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          name, String.valueOf(playerWins), String.valueOf(aiWins));
+
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          "HAL-9000", String.valueOf(aiWins), String.valueOf(playerWins));
       MessageCli.PRINT_END_GAME.printMessage("HAL-9000"); // Print if AI wins
     } else {
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          name, String.valueOf(playerWins), String.valueOf(aiWins));
+
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          "HAL-9000", String.valueOf(aiWins), String.valueOf(playerWins));
       MessageCli.PRINT_END_GAME_TIE.printMessage(); // Print if it's a tie
     }
     chosenChoice = null; // Reset chosen choice
