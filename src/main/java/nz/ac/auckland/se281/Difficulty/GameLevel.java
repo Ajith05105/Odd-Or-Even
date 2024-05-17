@@ -1,4 +1,4 @@
-package nz.ac.auckland.se281.Difficulty;
+package nz.ac.auckland.se281.difficulty;
 
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;

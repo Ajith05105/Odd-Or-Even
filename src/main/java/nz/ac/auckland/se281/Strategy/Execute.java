@@ -1,4 +1,4 @@
-package nz.ac.auckland.se281.Strategy;
+package nz.ac.auckland.se281.strategy;
 
 import nz.ac.auckland.se281.Main.Choice;
 

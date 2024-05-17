@@ -1,10 +1,10 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
-import nz.ac.auckland.se281.Difficulty.GameFactory;
-import nz.ac.auckland.se281.Difficulty.GameLevel;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
+import nz.ac.auckland.se281.difficulty.GameFactory;
+import nz.ac.auckland.se281.difficulty.GameLevel;
 
 public class Game {
   protected ArrayList<String> historyOfWinners =
