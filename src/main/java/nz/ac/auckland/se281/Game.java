@@ -18,41 +18,41 @@ public class Game {
 
   // Method to start a new game
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
-    round = 0; // Reset round number
-    playerWins = 0; // Reset player wins
-    aiWins = 0; // Reset AI wins
-    chosenDifficulty = difficulty; // Set chosen difficulty
-    chosenChoice = choice; // Set chosen choice
-    name = options[0]; // Set player name
-    MessageCli.WELCOME_PLAYER.printMessage(options[0]); // Welcome the player
-    game = GameFactory.createGame(chosenDifficulty); // Create a game object based on difficulty
-    historyOfWinners = game.getHistoryOfWins(); // Initialize history of winners
+    round = 0;
+    playerWins = 0; 
+    aiWins = 0; 
+    chosenDifficulty = difficulty;
+    chosenChoice = choice; 
+    name = options[0]; 
+    MessageCli.WELCOME_PLAYER.printMessage(options[0]); 
+    game = GameFactory.createGame(chosenDifficulty); 
+    historyOfWinners = game.getHistoryOfWins(); 
   }
 
   // Method to play a round of the game
   public void play() {
     round++; // Increment round number
     if (chosenChoice == null) {
-      MessageCli.GAME_NOT_STARTED.printMessage(); // Print error if the game has not started
+      MessageCli.GAME_NOT_STARTED.printMessage(); 
       return;
     }
 
     MessageCli.START_ROUND.printMessage(String.valueOf(round)); // Print the start of the round
 
-    boolean validInput = false; // Flag to check valid input
-    int fingers = 0; // Number of fingers input by player
+    boolean validInput = false; 
+    int fingers = 0; 
 
     // Loop to get valid input from player
     while (!validInput) {
-      MessageCli.ASK_INPUT.printMessage(); // Ask for input
-      String input = Utils.scanner.nextLine(); // Read input
+      MessageCli.ASK_INPUT.printMessage(); 
+      String input = Utils.scanner.nextLine(); 
 
       try {
-        fingers = Integer.parseInt(input); // Try to parse input as an integer
+        fingers = Integer.parseInt(input); 
         if (fingers < 0 || fingers > 5) {
-          MessageCli.INVALID_INPUT.printMessage(); // Print error if input is out of range
+          MessageCli.INVALID_INPUT.printMessage(); 
         } else {
-          validInput = true; // Set valid input flag
+          validInput = true; 
         }
       } catch (NumberFormatException e) {
         MessageCli.INVALID_INPUT.printMessage(); // Print error if input is not a number
@@ -64,12 +64,12 @@ public class Game {
 
     // Determine if the input number is even or odd
     if (Utils.isEven(fingers)) {
-      roundChoice = Choice.EVEN; // Set choice to EVEN
+      roundChoice = Choice.EVEN; 
     } else {
-      roundChoice = Choice.ODD; // Set choice to ODD
+      roundChoice = Choice.ODD; 
     }
-    game.addChoice(roundChoice); // Add choice to game history
-    game.play(fingers, name, chosenChoice, round); // Play the game round
+    game.addChoice(roundChoice); 
+    game.play(fingers, name, chosenChoice, round); 
   }
 
   // Method to end the game and print the outcome

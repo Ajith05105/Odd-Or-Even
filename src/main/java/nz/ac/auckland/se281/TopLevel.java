@@ -10,8 +10,7 @@ public class TopLevel implements Execute {
   private int total = 0; // Total fingers (player + AI)
   private Choice playerChoice; // Player's choice (EVEN or ODD)
   private Choice likelyChoice; // AI's likely choice based on history
-  private ArrayList<Choice> historyOfChoices =
-      new ArrayList<Choice>(); // History of player's choices
+  private ArrayList<Choice> historyOfChoices = new ArrayList<Choice>();
   private String winner = ""; // Winner of the current round
   private int even = 0; // Count of EVEN choices in history
   private int odd = 0; // Count of ODD choices in history
