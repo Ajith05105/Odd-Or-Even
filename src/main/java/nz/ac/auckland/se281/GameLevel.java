@@ -9,6 +9,10 @@ public abstract class GameLevel {
 
   public abstract void play(int fingers, String name, Choice choice, int round);
 
+  public ArrayList<String> getHistoryOfWins() {
+    return historyOfWinners;
+  }
+
   public void addWinner(String winner) {
     historyOfWinners.add(winner);
   }

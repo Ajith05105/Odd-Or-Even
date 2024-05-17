@@ -1,25 +1,31 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
-/** This class represents the Game is the main entry point. */
 public class Game {
+  protected ArrayList<String> historyOfWinners = new ArrayList<String>();
   private String name;
   private int round = 0;
   Difficulty chosenDifficulty = null;
   Choice roundChoice = null;
   Choice chosenChoice = null;
   GameLevel game = null;
+  int aiWins = 0;
+  int playerWins = 0;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
-    // the first element of options[0]; is the name of the player
+    // The first element of options[0] is the name of the player
     round = 0;
+    playerWins = 0;
+    aiWins = 0;
     chosenDifficulty = difficulty;
     chosenChoice = choice;
     name = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     game = GameFactory.createGame(chosenDifficulty);
+    historyOfWinners = game.getHistoryOfWins();
   }
 
   public void play() {
@@ -50,8 +56,6 @@ public class Game {
       }
     }
 
-    // if statments to check wether user input is odd or even
-
     MessageCli.PRINT_INFO_HAND.printMessage(name, String.valueOf(fingers));
 
     if (Utils.isEven(fingers)) {
@@ -63,7 +67,54 @@ public class Game {
     game.play(fingers, name, chosenChoice, round);
   }
 
-  public void endGame() {}
+  public void endGame() {
+    System.out.println(historyOfWinners);
+    if (chosenChoice == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
 
-  public void showStats() {}
+    playerWins = 0;
+    aiWins = 0;
+
+    for (String winner : historyOfWinners) {
+      if (winner.equals(name)) {
+        playerWins++;
+      } else {
+        aiWins++;
+      }
+    }
+
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        name, String.valueOf(playerWins), String.valueOf(aiWins));
+
+    if (playerWins > aiWins) {
+      MessageCli.PRINT_END_GAME.printMessage(name);
+    } else if (playerWins < aiWins) {
+      MessageCli.PRINT_END_GAME.printMessage("HAL-9000");
+    } else {
+      MessageCli.PRINT_END_GAME_TIE.printMessage();
+    }
+  }
+
+  public void showStats() {
+    if (chosenChoice == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+
+    playerWins = 0;
+    aiWins = 0;
+
+    for (String winner : historyOfWinners) {
+      if (winner.equals(name)) {
+        playerWins++;
+      } else {
+        aiWins++;
+      }
+    }
+
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        name, String.valueOf(playerWins), String.valueOf(aiWins));
+  }
 }
