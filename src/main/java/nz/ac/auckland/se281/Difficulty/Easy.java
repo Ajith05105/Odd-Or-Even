@@ -1,8 +1,8 @@
-package nz.ac.auckland.se281.Difficulty;
+package nz.ac.auckland.se281.difficulty;
 
 import nz.ac.auckland.se281.Main.Choice;
-import nz.ac.auckland.se281.Strategy.Random;
-import nz.ac.auckland.se281.Strategy.Strategy;
+import nz.ac.auckland.se281.strategy.Random;
+import nz.ac.auckland.se281.strategy.Strategy;
 
 public class Easy extends GameLevel {
   private String winner; // Variable to store the winner of the round

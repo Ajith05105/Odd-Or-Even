@@ -1,4 +1,4 @@
-package nz.ac.auckland.se281.Difficulty;
+package nz.ac.auckland.se281.difficulty;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.MessageCli;
