@@ -10,9 +10,9 @@ public class TopLevel implements Execute {
   private Choice playerChoice;
   private Choice likelyChoice;
   private ArrayList<Choice> historyOfChoices = new ArrayList<Choice>();
-  String winner = "";
-  int even = 0;
-  int odd = 0;
+  private String winner = "";
+  private int even = 0;
+  private int odd = 0;
 
   public TopLevel(ArrayList<Choice> historyOfChoices) {
     this.historyOfChoices = historyOfChoices;

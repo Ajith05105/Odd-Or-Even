@@ -8,12 +8,12 @@ public class Game {
   protected ArrayList<String> historyOfWinners = new ArrayList<String>();
   private String name;
   private int round = 0;
-  Difficulty chosenDifficulty = null;
-  Choice roundChoice = null;
-  Choice chosenChoice = null;
-  GameLevel game = null;
-  int aiWins = 0;
-  int playerWins = 0;
+  private Difficulty chosenDifficulty = null;
+  private Choice roundChoice = null;
+  private Choice chosenChoice = null;
+  private GameLevel game = null;
+  private int aiWins = 0;
+  private int playerWins = 0;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // The first element of options[0] is the name of the player
@@ -85,9 +85,6 @@ public class Game {
       }
     }
 
-    
-
-
     if (playerWins > aiWins) {
       MessageCli.PRINT_END_GAME.printMessage(name);
     } else if (playerWins < aiWins) {
@@ -120,6 +117,5 @@ public class Game {
 
     MessageCli.PRINT_PLAYER_WINS.printMessage(
         "HAL-9000", String.valueOf(aiWins), String.valueOf(playerWins));
-
   }
 }
