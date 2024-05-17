@@ -14,6 +14,7 @@ public class Game {
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     // the first element of options[0]; is the name of the player
+    round = 0;
     chosenDifficulty = difficulty;
     chosenChoice = choice;
     name = options[0];
@@ -23,6 +24,10 @@ public class Game {
 
   public void play() {
     round++;
+    if (chosenChoice == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
 
     MessageCli.START_ROUND.printMessage(String.valueOf(round));
 
